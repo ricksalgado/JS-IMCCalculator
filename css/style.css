@@ -80,3 +80,71 @@ button:hover {
 #clear-btn{
     background-color: #444;
 }
+
+/* Table */
+#result-container{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#bmi-number{
+    font-size: 2.5rem;
+    margin-bottom: 0.6rem;   
+}
+
+#bmi-info{
+    margin-top: 1.4rem;
+}
+
+
+#result-container h2{
+    margin: 1.4rem;
+}
+
+#result-container h3{
+    margin-top: 1rem;
+    color: #dfdfdf;
+}
+
+#bmi-table{
+    margin: 1.5rem 0;
+    font-size: 0.8rem;
+}
+
+.table-header{
+    font-weight: bold;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.table-header,.table-data{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+
+}
+
+.table-header h3, .table-data p{
+    flex: 1;
+    text-align: center;
+}
+
+.good{
+    color: #12db34;
+}
+
+.low{
+    color: #dbce12;
+}
+
+.medium{
+    color: #db6212;
+}
+
+.high{
+    color: #db1912;
+}
+
