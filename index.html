@@ -6,14 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/reset-css@3.0.0/reset.min.css" type="text/css" rel="stylesheet">
 
-    <title>IMC Calculator</title>
+    <title>BMI Calculator</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-
-
+<div class="container">
+    <div id="calc-container">
+        <h1>BMI Calculator </h1>
+        <form id="bmi-form">
+            <div class="form-inputs">
+                <div class="form-control">
+                    <label for="height">Height (m):</label>
+                    <input type="text" name="height" id="height" placeholder="1.85">
+                </div>
+                <div class="form-control">
+                    <label for="weight">Weight(kg):</label>
+                    <input type="text" name="weight" id="weight" placeholder="85">
+                </div>
+            </div>
+            <div class="action-control">
+                <button id="calc-btn">Calculate</button>
+                <button id="clear-btn">Clear</button>
+            </div>
+        </form>
+        <div id="result-container">
+            <p id="bmi-number">Your BMI is: <span id="bmi-value"></span></p>
+            <p id="bmi-info">Your situation is:<span></span></p>
+            <h2>Check the classifications</h2>
+            <div id="bmi-table">
+                <div class="table-header">
+                    <h3>BMI</h3>
+                    <h3>Body Composition</h3>
+                    <h3>Classifications</h3>
+                </div>
+            </div>
+            <button id="back-btn">Back</button>
+        </div>
+    </div>
+</div>
 
     <script src="js/main.js" defer></script>
 </body>
