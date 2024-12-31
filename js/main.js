@@ -42,8 +42,12 @@ const bmiTable = document.querySelector('#bmi-table');
 
 const heightInput = document.querySelector('#height');
 const weightInput = document.querySelector('#weight');
-const calcBtn = document.querySelector('#calc-btn')
-const clearBtn = document.querySelector('#clear-btn')
+const calcBtn = document.querySelector('#calc-btn');
+const clearBtn = document.querySelector('#clear-btn');
+const backBtn = document.querySelector('#back-btn');
+
+const bmiNumber = document.querySelector('#bmi-number span');
+const bmiInfo = document.querySelector('#bmi-info span')
 
 // Function
 function createTable(data) {
@@ -73,10 +77,15 @@ function clearInputs() {
     weightInput.value = '';
 }
 
-function validDigits(text){
+function validDigits(text) {
     return text.replace(/[^0-9.]/g, "");
 }
 
+function calcBmi(weight,height) {
+    const bmi = (weight / (height * height)).toFixed(1);
+
+    return bmi;
+}
 
 // Proj init
 createTable(data);
@@ -90,6 +99,33 @@ createTable(data);
         e.target.value = updatedValue;
     });
 });
+
+calcBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const height = +heightInput.value
+    const weight = +weightInput.value
+
+    if (!height || !weight) return;
+
+    const bmi = calcBmi(weight, height)
+
+    console.warn(bmi);
+
+    let info;
+
+    data.forEach((item) => {
+        if (bmi >= item.min && bmi <= item.max){
+            info = item.info;
+        }
+    })
+    console.log(info);
+
+    if(!info) return;
+
+    bmiNumber.innerText = bmi
+    bmiInfo.innerText = info
+})
 
 clearBtn.addEventListener("click", (e) => {
     e.preventDefault();
