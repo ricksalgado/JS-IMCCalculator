@@ -5,9 +5,19 @@
     box-sizing: border-box;
 }
 
+
+#logoimg{
+    width: 190px;
+    padding: 15px;
+    background-color: #eeeeeeb8;
+    margin: 20px;
+    border-radius: 1rem;
+}
+
 body {
     background-color: #090e22;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
