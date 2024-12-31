@@ -46,6 +46,9 @@ const calcBtn = document.querySelector('#calc-btn');
 const clearBtn = document.querySelector('#clear-btn');
 const backBtn = document.querySelector('#back-btn');
 
+const calcContainer = document.querySelector('#calc-container');
+const resultContainer = document.querySelector('#result-container');
+
 const bmiNumber = document.querySelector('#bmi-number span');
 const bmiInfo = document.querySelector('#bmi-info span')
 
@@ -75,16 +78,23 @@ function createTable(data) {
 function clearInputs() {
     heightInput.value = '';
     weightInput.value = '';
+    bmiNumber.classList = '';
+    bmiInfo.classList = '';
 }
 
 function validDigits(text) {
     return text.replace(/[^0-9.]/g, "");
 }
 
-function calcBmi(weight,height) {
+function calcBmi(weight, height) {
     const bmi = (weight / (height * height)).toFixed(1);
 
     return bmi;
+}
+
+function showOrHideResults() {
+    calcContainer.classList.toggle('hide')
+    resultContainer.classList.toggle('hide')
 }
 
 // Proj init
@@ -115,16 +125,42 @@ calcBtn.addEventListener("click", (e) => {
     let info;
 
     data.forEach((item) => {
-        if (bmi >= item.min && bmi <= item.max){
+        if (bmi >= item.min && bmi <= item.max) {
             info = item.info;
         }
     })
     console.log(info);
 
-    if(!info) return;
+    if (!info) return;
 
     bmiNumber.innerText = bmi
     bmiInfo.innerText = info
+
+    switch (info) {
+        case "Underweight":
+            bmiNumber.classList.add('low');
+            bmiInfo.classList.add('low');
+            break;
+        case "Normal":
+            bmiNumber.classList.add('good');
+            bmiInfo.classList.add('good');
+            break;
+        case "Overweight":
+            bmiNumber.classList.add('low');
+            bmiInfo.classList.add('low');
+            break;
+        case "Obese":
+            bmiNumber.classList.add('medium');
+            bmiInfo.classList.add('medium');
+            break;
+        case "Morbid obesity":
+            bmiNumber.classList.add('high');
+            bmiInfo.classList.add('high');
+            break;
+
+    }
+
+    showOrHideResults();
 })
 
 clearBtn.addEventListener("click", (e) => {
@@ -132,4 +168,9 @@ clearBtn.addEventListener("click", (e) => {
 
     clearInputs();
 });
+
+backBtn.addEventListener("click", () => {
+    clearInputs()
+    showOrHideResults();
+})
 
